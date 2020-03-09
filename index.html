@@ -15,11 +15,14 @@
 
       <button id="homeBtn" type="button" class="btn btn-dark rounded-pill mr-20px">Home</button>
       <button id="adminBtn" type="button" class="btn btn-dark rounded-pill">Admin</button>
-    </div>
+
 
     <!-- homePage -->
-    <div id="homePage" class="container pt-5">
-      This is my home page
+    <div id="homePage" class="container py-5">
+      <button id="viewProductBtn" type="button" class="btn btn-dark rounded-pill">View all products</button>
+
+      <div id="productCards" class="row">
+      </div>
     </div>
 
     <div id="adminPage" class="my-5 mx-3 px-3 bg-dark text-light">
@@ -27,8 +30,21 @@
       <button id="logoutBtn" type="button" class="btn btn-dark rounded-pill">Logout</button>
       <button id="registerBtn" type="button" class="btn btn-dark rounded-pill mr-20px">Register</button>
       <button id="viewUserBtn" type="button" class="btn btn-dark rounded-pill">View all users</button>
-    </div>
 
+
+    <!-- login form -->
+    <form id="loginForm" class="my-5">
+      <label for="username" class=""> Username:  </lablel>
+      <input type="text" id="username" name="username" class="form-control" value="">
+
+      <label for="password" class=""> Password:  </lablel>
+      <input type="password" id="password" name="password" class="form-control" value="">
+
+      <button id="submit" type="submit" name="button" class="btn btn-lg btn-warning mt-5">Submit</button>
+    </form>
+
+  </div>
+</div>
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
     <script src="node_modules/@popperjs/core/dist/umd/popper.min.js"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
