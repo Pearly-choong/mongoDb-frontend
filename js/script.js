@@ -3,10 +3,22 @@ console.log(sessionStorage);
 let url;
 
 $(document).ready(function(){
+  if(sessionStorage['userName']){
+    console.log('You are logged in');
+  } else {
+    console.log('Please login');
+  }
+
+
   $('#heading').click(function(){
     // $(this).css('background', 'teal');
   });
 
+$('#loginForm').hide();
+$('#loginBtn').click(function(){
+  $('#loginForm').show();
+  $()
+});
 
 $('#adminPage').hide();
 $('#adminBtn').click(function(){
@@ -36,7 +48,7 @@ $.ajax({
 
 
 
-
+// ======= View users ===========
 $('#viewUserBtn').click(function(){
   $.ajax({
   //url :`http://192.168.33.10:3000/allUsers`,
@@ -54,7 +66,7 @@ $('#viewUserBtn').click(function(){
 
 
 
-
+// ======= View products ===========
 $('#viewProductBtn').click(function(){
   $.ajax({
   //url :`http://192.168.33.10:3000/allUsers`,
@@ -80,6 +92,42 @@ $('#viewProductBtn').click(function(){
   }); //ajax
 }); //viewProduct button
 
+
+
+// ======= Product form - update product ===========
+$('#productForm').submit(function(){
+  event.preventDefault();
+  let  productId = $('#productId').val();
+  let  productName = $('#productName').val();
+  let  productPrice = $('#productPrice').val();
+  let  userId = $('#userId').val();
+
+  console.log(productId, productName, productPrice, userId);
+  $.ajax({
+    url :`${url}/updateProduct/${productId}`,
+    type :'PATCH',
+    data:{
+      productname : productName,
+      price : productPrice,
+      userId : userId
+      },
+    success : function(data){
+      console.log(data);
+    },//success
+    error:function(){
+      console.log('error: cannot call api');
+    }//error
+
+
+  });//ajax
+
+});//product function for productForm
+
+
+
+
+
+// ======= Login ===========
 $('#loginForm').submit(function(){
 // $('#submit').click(function(){
   event.preventDefault();
@@ -109,7 +157,18 @@ $('#loginForm').submit(function(){
     console.log('error: cannot call api');
   }//error
   }); //ajax
-});
+}); //submit function for loginForm
+
+
+
+// ======= Logout  ===========
+$('#logoutBtn').click(function(){
+  sessionStorage.clear();
+  console.log(sessionStorage);
+})
+
+
+
 
 
 }); //document.ready
